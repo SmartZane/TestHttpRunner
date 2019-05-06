@@ -1,0 +1,36 @@
+{
+    "config": {
+        "name": "create users with parameters",
+        "base_url": "${ENV(base_url)}",
+        "variables": {
+            "device_sn": "${gen_random_string(15)}"
+        }
+    },
+    "testcases": {
+        "create user $user_id": {
+            "testcase": "testcases/case_creat_user.json",
+            "parameters": {
+                "os_platform": [
+                    "iOS/10.1"
+                ],
+                "user_id": [
+                    "1000"
+                ],
+                "username-password": [
+                    [
+                        "user1",
+                        "111111"
+                    ],
+                    [
+                        "user2",
+                        "222222"
+                    ],
+                    [
+                        "user3",
+                        "333333"
+                    ]
+                ]
+            }
+        }
+    }
+}

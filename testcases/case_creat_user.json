@@ -1,0 +1,48 @@
+[
+    {
+        "config": {
+            "name": "testcase description"
+        }
+    },
+    {
+        "test": {
+            "name": "get token",
+            "testcase": "testcases/case_get_token.json",
+            "output": [
+                "token"
+            ]
+        }
+    },
+    {
+        "test": {
+            "name": "/api/users/$user_id",
+            "variables": {
+                "user_id": "$user_id",
+                "name": "$username",
+                "password": "$password"
+            },
+            "request": {
+                "url": "/api/users/$user_id",
+                "method": "POST",
+                "headers": {
+                    "User-Agent": "python-requests/2.18.4",
+                    "device_sn": "$device_sn",
+                    "token": "$token",
+                    "Content-Type": "application/json"
+                },
+                "json": {
+                    "name": "$name",
+                    "password": "$password"
+                }
+            },
+            "validate": [
+                {
+                    "eq": [
+                        "content.msg",
+                        "user created successfully."
+                    ]
+                }
+            ]
+        }
+    }
+]
